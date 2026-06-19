@@ -3,394 +3,420 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Sunwell — Support</title>
-<meta name="description" content="Help, answers, and support for Sunwell. Find FAQs or reach our team directly." />
-<meta name="theme-color" content="#0b0716" />
+<title>CleanIt — Support & FAQ</title>
+<meta name="description" content="Support and frequently asked questions for CleanIt, the fastest way to swipe away clutter and reclaim your photo storage." />
+<meta name="theme-color" content="#06060a" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --bg: #0b0716;
-    --bg-2: #120a26;
-    --ink: #f3eefe;
-    --muted: #a99fc7;
-    --gold: #ffcf6b;
-    --gold-deep: #ff9d3c;
-    --violet: #8b5cf6;
-    --pink: #f472b6;
-    --cyan: #5ad7ff;
-    --card: rgba(255, 255, 255, 0.045);
-    --card-brd: rgba(255, 255, 255, 0.09);
+    --bg: #06060a;
+    --bg-soft: #0c0c14;
+    --card: rgba(255,255,255,0.035);
+    --card-border: rgba(255,255,255,0.08);
+    --text: #f4f4fb;
+    --muted: #9a9ab0;
+    --accent: #54b6ff;
+    --accent-2: #9b7bff;
+    --accent-3: #3df2c0;
     --radius: 22px;
-    --maxw: 1080px;
+    --shadow: 0 30px 80px -20px rgba(0,0,0,0.6);
+    --maxw: 980px;
   }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; }
-
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   body {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     background: var(--bg);
-    color: var(--ink);
-    overflow-x: hidden;
+    color: var(--text);
     line-height: 1.6;
+    overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
   }
 
-  h1, h2, h3, .brand { font-family: 'Sora', sans-serif; letter-spacing: -0.02em; }
-
-  a { color: inherit; text-decoration: none; }
-
-  /* ---------- Animated atmosphere ---------- */
-  .atmos {
-    position: fixed;
-    inset: 0;
-    z-index: -2;
-    background:
-      radial-gradient(1200px 700px at 15% -10%, rgba(139,92,246,0.30), transparent 60%),
-      radial-gradient(900px 600px at 95% 5%, rgba(255,157,60,0.22), transparent 55%),
-      radial-gradient(1000px 800px at 50% 110%, rgba(90,215,255,0.16), transparent 60%),
-      linear-gradient(180deg, var(--bg), var(--bg-2));
-  }
-
+  /* ---------- Animated atmospheric background ---------- */
+  .bg-field { position: fixed; inset: 0; z-index: -2; overflow: hidden; }
   .orb {
-    position: fixed;
+    position: absolute;
     border-radius: 50%;
-    filter: blur(70px);
+    filter: blur(80px);
     opacity: 0.55;
-    z-index: -1;
-    animation: float 18s ease-in-out infinite;
-    pointer-events: none;
+    will-change: transform;
   }
-  .orb.a { width: 380px; height: 380px; background: radial-gradient(circle, var(--gold), transparent 70%); top: -60px; left: -40px; }
-  .orb.b { width: 460px; height: 460px; background: radial-gradient(circle, var(--violet), transparent 70%); top: 30%; right: -120px; animation-delay: -6s; }
-  .orb.c { width: 340px; height: 340px; background: radial-gradient(circle, var(--cyan), transparent 70%); bottom: -80px; left: 30%; animation-delay: -11s; }
+  .orb.a { width: 520px; height: 520px; background: radial-gradient(circle at 30% 30%, #2e7bff, transparent 70%); top: -160px; left: -120px; animation: drift1 22s ease-in-out infinite; }
+  .orb.b { width: 460px; height: 460px; background: radial-gradient(circle at 30% 30%, #9b7bff, transparent 70%); top: 30%; right: -160px; animation: drift2 26s ease-in-out infinite; }
+  .orb.c { width: 420px; height: 420px; background: radial-gradient(circle at 30% 30%, #3df2c0, transparent 70%); bottom: -180px; left: 25%; animation: drift3 30s ease-in-out infinite; opacity: 0.4; }
+  @keyframes drift1 { 0%,100%{ transform: translate(0,0) scale(1);} 50%{ transform: translate(80px,60px) scale(1.15);} }
+  @keyframes drift2 { 0%,100%{ transform: translate(0,0) scale(1);} 50%{ transform: translate(-70px,40px) scale(1.1);} }
+  @keyframes drift3 { 0%,100%{ transform: translate(0,0) scale(1);} 50%{ transform: translate(40px,-60px) scale(1.2);} }
 
-  @keyframes float {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(40px, -30px) scale(1.08); }
-    66% { transform: translate(-30px, 25px) scale(0.95); }
-  }
-
-  /* grain */
   .grain {
-    position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0.04;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+    opacity: 0.04;
   }
 
   /* ---------- Layout ---------- */
   .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+  section { position: relative; }
 
   /* ---------- Nav ---------- */
-  nav {
+  header.nav {
     position: sticky; top: 0; z-index: 50;
     backdrop-filter: blur(18px);
-    background: rgba(11, 7, 22, 0.55);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    background: rgba(6,6,10,0.55);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
   }
-  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
-  .brand { display: flex; align-items: center; gap: 11px; font-weight: 800; font-size: 1.15rem; }
-  .brand .mark {
-    width: 30px; height: 30px; border-radius: 9px;
-    background: conic-gradient(from 210deg, var(--gold), var(--gold-deep), var(--pink), var(--violet), var(--cyan), var(--gold));
-    box-shadow: 0 0 22px rgba(255,157,60,0.55);
-    animation: spin 9s linear infinite;
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .brand { display: flex; align-items: center; gap: 12px; font-family: 'Sora'; font-weight: 700; font-size: 18px; letter-spacing: -0.02em; }
+  .logo {
+    width: 38px; height: 38px; border-radius: 12px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    display: grid; place-items: center;
+    box-shadow: 0 8px 24px -6px rgba(84,182,255,0.6);
+    position: relative; overflow: hidden;
   }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  .nav-links { display: flex; gap: 28px; font-size: 0.92rem; color: var(--muted); font-weight: 500; }
-  .nav-links a { transition: color 0.25s; position: relative; }
-  .nav-links a:hover { color: var(--ink); }
-  .nav-cta {
-    padding: 9px 18px; border-radius: 999px; font-weight: 600; font-size: 0.9rem;
-    background: linear-gradient(135deg, var(--gold), var(--gold-deep));
-    color: #2b1500; box-shadow: 0 8px 26px rgba(255,157,60,0.35);
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 34px rgba(255,157,60,0.5); }
-  @media (max-width: 720px) { .nav-links { display: none; } }
+  .logo svg { width: 22px; height: 22px; }
+  .nav-links { display: flex; gap: 28px; font-size: 14px; font-weight: 500; }
+  .nav-links a { color: var(--muted); text-decoration: none; transition: color .2s; }
+  .nav-links a:hover { color: var(--text); }
+  @media (max-width: 680px) { .nav-links { display: none; } }
 
   /* ---------- Hero ---------- */
-  header { padding: 96px 0 72px; text-align: center; position: relative; }
+  .hero { padding: 90px 0 70px; text-align: center; }
   .pill {
     display: inline-flex; align-items: center; gap: 8px;
-    padding: 7px 15px; border-radius: 999px; font-size: 0.82rem; font-weight: 600;
-    background: var(--card); border: 1px solid var(--card-brd); color: var(--gold);
+    padding: 7px 16px; border-radius: 999px;
+    background: var(--card); border: 1px solid var(--card-border);
+    font-size: 13px; color: var(--muted); font-weight: 500;
     margin-bottom: 26px;
   }
-  .pill .dot { width: 7px; height: 7px; border-radius: 50%; background: #5be58a; box-shadow: 0 0 10px #5be58a; animation: pulse 2s infinite; }
-  @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.35;} }
+  .pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-3); box-shadow: 0 0 12px var(--accent-3); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:.35;} }
 
-  header h1 { font-size: clamp(2.6rem, 7vw, 4.8rem); font-weight: 800; line-height: 1.02; margin-bottom: 22px; }
-  header h1 .grad {
-    background: linear-gradient(120deg, var(--gold) 10%, var(--pink) 45%, var(--violet) 80%);
-    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  .hero h1 {
+    font-family: 'Sora'; font-weight: 800;
+    font-size: clamp(40px, 7vw, 76px); line-height: 1.02;
+    letter-spacing: -0.03em; margin-bottom: 22px;
   }
-  header p { font-size: clamp(1.05rem, 2.4vw, 1.3rem); color: var(--muted); max-width: 620px; margin: 0 auto 38px; }
-  .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .hero h1 .grad {
+    background: linear-gradient(120deg, #54b6ff, #9b7bff 45%, #3df2c0);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    background-size: 200% 200%; animation: shimmer 6s ease infinite;
+  }
+  @keyframes shimmer { 0%,100%{background-position:0% 50%;} 50%{background-position:100% 50%;} }
+  .hero p { font-size: clamp(17px, 2.4vw, 20px); color: var(--muted); max-width: 600px; margin: 0 auto 36px; }
+
+  .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
   .btn {
-    padding: 15px 30px; border-radius: 14px; font-weight: 600; font-size: 1rem;
-    transition: transform 0.2s, box-shadow 0.25s; cursor: pointer; border: none;
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 15px 28px; border-radius: 14px; font-weight: 600; font-size: 15px;
+    text-decoration: none; cursor: pointer; border: none;
+    transition: transform .2s ease, box-shadow .2s ease;
   }
-  .btn-primary {
-    background: linear-gradient(135deg, var(--gold), var(--gold-deep));
-    color: #2b1500; box-shadow: 0 14px 40px rgba(255,157,60,0.4);
-  }
-  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 20px 50px rgba(255,157,60,0.55); }
-  .btn-ghost { background: var(--card); border: 1px solid var(--card-brd); color: var(--ink); }
-  .btn-ghost:hover { transform: translateY(-3px); background: rgba(255,255,255,0.08); }
+  .btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff; box-shadow: 0 14px 36px -10px rgba(84,182,255,0.6); }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 22px 48px -10px rgba(84,182,255,0.7); }
+  .btn-ghost { background: var(--card); color: var(--text); border: 1px solid var(--card-border); }
+  .btn-ghost:hover { transform: translateY(-3px); background: rgba(255,255,255,0.07); }
 
-  /* ---------- Reveal animation ---------- */
-  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1); }
-  .reveal.in { opacity: 1; transform: none; }
+  /* ---------- Section headings ---------- */
+  .sec-head { text-align: center; margin-bottom: 48px; }
+  .sec-head .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  .sec-head h2 { font-family: 'Sora'; font-weight: 700; font-size: clamp(28px, 4.5vw, 44px); letter-spacing: -0.02em; }
+  .sec-head p { color: var(--muted); margin-top: 12px; font-size: 16px; }
 
-  /* ---------- Sections ---------- */
-  section { padding: 64px 0; }
-  .sec-head { text-align: center; margin-bottom: 52px; }
-  .sec-head .kicker { color: var(--gold); font-weight: 600; font-size: 0.85rem; letter-spacing: 0.14em; text-transform: uppercase; }
-  .sec-head h2 { font-size: clamp(1.9rem, 4.5vw, 2.9rem); margin: 12px 0 14px; }
-  .sec-head p { color: var(--muted); max-width: 560px; margin: 0 auto; }
-
-  /* ---------- Cards / help options ---------- */
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+  /* ---------- Feature/help cards ---------- */
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  @media (max-width: 820px){ .grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 540px){ .grid { grid-template-columns: 1fr; } }
   .card {
-    background: var(--card); border: 1px solid var(--card-brd); border-radius: var(--radius);
-    padding: 30px 26px; transition: transform 0.3s, border-color 0.3s, background 0.3s;
+    background: var(--card); border: 1px solid var(--card-border);
+    border-radius: var(--radius); padding: 28px 24px;
+    transition: transform .3s ease, border-color .3s ease, background .3s ease;
     position: relative; overflow: hidden;
   }
   .card::before {
-    content: ''; position: absolute; inset: 0; border-radius: var(--radius);
-    background: radial-gradient(400px 200px at var(--mx, 50%) var(--my, 0%), rgba(255,207,107,0.12), transparent 70%);
-    opacity: 0; transition: opacity 0.4s;
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(400px circle at var(--mx,50%) var(--my,0%), rgba(84,182,255,0.12), transparent 60%);
+    opacity: 0; transition: opacity .3s;
   }
-  .card:hover { transform: translateY(-6px); border-color: rgba(255,207,107,0.3); background: rgba(255,255,255,0.06); }
+  .card:hover { transform: translateY(-6px); border-color: rgba(255,255,255,0.18); background: rgba(255,255,255,0.05); }
   .card:hover::before { opacity: 1; }
-  .card .ico {
+  .ic {
     width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center;
-    font-size: 1.5rem; margin-bottom: 18px;
-    background: linear-gradient(135deg, rgba(255,207,107,0.18), rgba(139,92,246,0.18));
-    border: 1px solid var(--card-brd);
+    background: linear-gradient(135deg, rgba(84,182,255,0.18), rgba(155,123,255,0.18));
+    border: 1px solid rgba(255,255,255,0.08); margin-bottom: 18px;
   }
-  .card h3 { font-size: 1.2rem; margin-bottom: 8px; }
-  .card p { color: var(--muted); font-size: 0.95rem; }
+  .ic svg { width: 26px; height: 26px; stroke: var(--accent); }
+  .card h3 { font-family: 'Sora'; font-weight: 600; font-size: 18px; margin-bottom: 8px; }
+  .card p { color: var(--muted); font-size: 14.5px; }
 
   /* ---------- FAQ ---------- */
-  .faq { max-width: 780px; margin: 0 auto; }
-  .qa {
-    background: var(--card); border: 1px solid var(--card-brd); border-radius: 16px;
-    margin-bottom: 14px; overflow: hidden; transition: border-color 0.3s, background 0.3s;
+  .faq-section { padding: 90px 0; }
+  .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+  .faq {
+    background: var(--card); border: 1px solid var(--card-border);
+    border-radius: 18px; overflow: hidden; transition: border-color .3s, background .3s;
   }
-  .qa.open { border-color: rgba(255,207,107,0.35); background: rgba(255,255,255,0.05); }
-  .qa button {
-    width: 100%; text-align: left; background: none; border: none; color: var(--ink);
-    padding: 22px 24px; font-size: 1.05rem; font-weight: 600; font-family: 'Sora', sans-serif;
-    cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  .faq.open { border-color: rgba(84,182,255,0.4); background: rgba(84,182,255,0.04); }
+  .faq-q {
+    width: 100%; text-align: left; background: none; border: none; cursor: pointer;
+    color: var(--text); font-family: 'Inter'; font-weight: 600; font-size: 16.5px;
+    padding: 22px 24px; display: flex; justify-content: space-between; align-items: center; gap: 16px;
   }
-  .qa .chev { flex-shrink: 0; width: 24px; height: 24px; display: grid; place-items: center; transition: transform 0.35s; color: var(--gold); }
-  .qa.open .chev { transform: rotate(45deg); }
-  .qa .ans { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
-  .qa .ans-inner { padding: 0 24px 22px; color: var(--muted); font-size: 0.97rem; }
+  .faq-q .chev { flex-shrink: 0; transition: transform .35s cubic-bezier(.4,0,.2,1); color: var(--accent); }
+  .faq.open .chev { transform: rotate(180deg); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height .4s cubic-bezier(.4,0,.2,1); }
+  .faq-a-inner { padding: 0 24px 24px; color: var(--muted); font-size: 15px; }
+  .faq-a-inner strong { color: var(--text); }
 
   /* ---------- Contact ---------- */
-  .contact {
-    text-align: center; border-radius: 28px; padding: 64px 28px; position: relative; overflow: hidden;
-    background: linear-gradient(135deg, rgba(139,92,246,0.18), rgba(255,157,60,0.14));
-    border: 1px solid var(--card-brd);
+  .contact { padding: 30px 0 100px; }
+  .contact-card {
+    max-width: 680px; margin: 0 auto; text-align: center;
+    background: linear-gradient(160deg, rgba(84,182,255,0.1), rgba(155,123,255,0.06));
+    border: 1px solid rgba(255,255,255,0.1); border-radius: 28px;
+    padding: 56px 32px; position: relative; overflow: hidden;
   }
-  .contact h2 { font-size: clamp(1.9rem, 4.5vw, 2.7rem); margin-bottom: 14px; }
-  .contact p { color: var(--muted); max-width: 480px; margin: 0 auto 30px; }
-  .email-chip {
-    display: inline-flex; align-items: center; gap: 12px; padding: 16px 26px; border-radius: 16px;
-    background: rgba(11,7,22,0.5); border: 1px solid var(--card-brd); font-weight: 600; font-size: 1.05rem;
-    transition: transform 0.2s, border-color 0.3s; font-family: 'Sora', sans-serif;
+  .contact-card::after {
+    content:''; position:absolute; top:-60%; left:-20%; width:140%; height:200%;
+    background: radial-gradient(circle, rgba(84,182,255,0.18), transparent 60%);
+    animation: drift1 18s ease-in-out infinite; z-index:0;
   }
-  .email-chip:hover { transform: translateY(-3px); border-color: var(--gold); }
-  .email-chip .copy { font-size: 0.75rem; color: var(--gold); padding: 4px 10px; border-radius: 999px; background: rgba(255,207,107,0.12); }
+  .contact-card > * { position: relative; z-index: 1; }
+  .contact-card h2 { font-family:'Sora'; font-weight:700; font-size: clamp(26px,4vw,38px); margin-bottom: 12px; letter-spacing:-0.02em; }
+  .contact-card p { color: var(--muted); margin-bottom: 28px; font-size: 16px; }
+  .email-btn {
+    display:inline-flex; align-items:center; gap:12px;
+    background: rgba(255,255,255,0.06); border:1px solid var(--card-border);
+    padding: 16px 26px; border-radius: 16px; text-decoration:none; color: var(--text);
+    font-weight:600; font-size:16px; transition: all .25s;
+  }
+  .email-btn:hover { transform: translateY(-3px); background: rgba(255,255,255,0.1); border-color: var(--accent); }
+  .email-btn svg { width:20px; height:20px; stroke: var(--accent); }
+  .resp { margin-top: 18px; font-size: 13.5px; color: var(--muted); }
 
   /* ---------- Footer ---------- */
-  footer { padding: 48px 0 60px; text-align: center; color: var(--muted); font-size: 0.88rem; border-top: 1px solid rgba(255,255,255,0.06); margin-top: 40px; }
-  footer .brand { justify-content: center; margin-bottom: 16px; font-size: 1rem; }
-  footer .flinks { display: flex; gap: 22px; justify-content: center; margin-bottom: 18px; flex-wrap: wrap; }
-  footer .flinks a:hover { color: var(--ink); }
+  footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 40px 0; }
+  .foot-inner { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+  .foot-inner .brand { font-size:16px; }
+  .foot-links { display:flex; gap:22px; font-size:14px; }
+  .foot-links a { color: var(--muted); text-decoration:none; transition: color .2s; }
+  .foot-links a:hover { color: var(--text); }
+  .copy { color: var(--muted); font-size: 13px; width:100%; text-align:center; margin-top: 14px; }
 
-  /* toast */
-  .toast {
-    position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(120px);
-    background: linear-gradient(135deg, var(--gold), var(--gold-deep)); color: #2b1500;
-    padding: 13px 24px; border-radius: 999px; font-weight: 600; font-size: 0.92rem;
-    box-shadow: 0 14px 40px rgba(255,157,60,0.5); transition: transform 0.4s cubic-bezier(0.2,0.8,0.2,1); z-index: 100;
+  /* ---------- Scroll reveal ---------- */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .orb, .contact-card::after, .pill .dot, .hero h1 .grad { animation: none; }
+    .reveal { transition: none; opacity:1; transform:none; }
+    html { scroll-behavior: auto; }
   }
-  .toast.show { transform: translateX(-50%) translateY(0); }
 </style>
 </head>
 <body>
-  <div class="atmos"></div>
-  <div class="grain"></div>
-  <div class="orb a"></div>
-  <div class="orb b"></div>
-  <div class="orb c"></div>
+  <div class="bg-field" aria-hidden="true">
+    <div class="orb a"></div>
+    <div class="orb b"></div>
+    <div class="orb c"></div>
+  </div>
+  <div class="grain" aria-hidden="true"></div>
 
   <!-- NAV -->
-  <nav>
-    <div class="wrap">
-      <a class="brand" href="#top"><span class="mark"></span>Sunwell</a>
-      <div class="nav-links">
-        <a href="#help">Help</a>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <div class="brand">
+        <span class="logo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+        </span>
+        CleanIt
+      </div>
+      <nav class="nav-links">
+        <a href="#help">Help Topics</a>
         <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
-      </div>
-      <a class="nav-cta" href="#contact">Get Support</a>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <header id="top">
-    <div class="wrap">
-      <span class="pill reveal"><span class="dot"></span> We typically reply within 24 hours</span>
-      <h1 class="reveal">How can we<br><span class="grad">help you shine?</span></h1>
-      <p class="reveal">Everything you need to get the most out of Sunwell. Browse common questions or reach our team directly — we're here for you.</p>
-      <div class="hero-btns reveal">
-        <a class="btn btn-primary" href="#faq">Browse FAQ</a>
-        <a class="btn btn-ghost" href="#contact">Contact Support</a>
-      </div>
+      </nav>
     </div>
   </header>
 
-  <!-- HELP OPTIONS -->
-  <section id="help">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="kicker">Quick Help</span>
-        <h2>Find what you need, fast</h2>
-        <p>Pick the path that fits your question and get pointed in the right direction.</p>
+  <!-- HERO -->
+  <section class="hero wrap">
+    <span class="pill reveal"><span class="dot"></span> We usually reply within 24 hours</span>
+    <h1 class="reveal">How can we <span class="grad">help you</span> today?</h1>
+    <p class="reveal">Everything you need to get the most out of CleanIt — the fastest way to swipe away clutter and reclaim your photo storage.</p>
+    <div class="cta-row reveal">
+      <a href="#faq" class="btn btn-primary">Browse FAQ</a>
+      <a href="mailto:cleanit@appstudios.ai" class="btn btn-ghost">Email Support</a>
+    </div>
+  </section>
+
+  <!-- HELP TOPICS -->
+  <section class="help wrap" id="help" style="padding: 50px 0 30px;">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Quick Start</div>
+      <h2>Popular help topics</h2>
+      <p>Tap a topic, or jump straight to the full FAQ below.</p>
+    </div>
+    <div class="grid">
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M12 4l-8 8 8 8"/><path d="M20 12l-8-8M20 12l-8 8"/></svg></div>
+        <h3>Swiping to clean</h3>
+        <p>Swipe left to mark a photo for deletion, right to keep it. Review your pile before anything is removed.</p>
       </div>
-      <div class="grid">
-        <div class="card reveal"><div class="ico">✦</div><h3>Getting Started</h3><p>New to Sunwell? Learn the essentials and set things up in minutes.</p></div>
-        <div class="card reveal"><div class="ico">⚡</div><h3>Subscriptions</h3><p>Manage your plan, billing, renewals, and restoring purchases.</p></div>
-        <div class="card reveal"><div class="ico">🔒</div><h3>Privacy &amp; Data</h3><p>Understand how your data is handled and kept secure.</p></div>
-        <div class="card reveal"><div class="ico">✉</div><h3>Talk to a Human</h3><p>Still stuck? Our team is one email away and happy to help.</p></div>
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 7l10-5 10 5M2 17l10 5 10-5"/></svg></div>
+        <h3>Free vs. Pro</h3>
+        <p>The free plan includes a weekly delete allowance. Pro unlocks unlimited swipes, Smart Scan, and more.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg></div>
+        <h3>Subscriptions</h3>
+        <p>Manage, upgrade, or cancel anytime from the App Store. Restore purchases in one tap inside Settings.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/></svg></div>
+        <h3>Privacy & data</h3>
+        <p>Your photos never leave your device. CleanIt works fully on-device — we can't see your library.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <h3>Smart Scan</h3>
+        <p>Smart Scan surfaces screenshots, blurry shots, and large videos so you can clear the biggest space first.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.7 9.7 0 0 0-6.7 2.7L3 8"/><path d="M3 3v5h5"/></svg></div>
+        <h3>Recovering photos</h3>
+        <p>Deleted photos go to your iOS "Recently Deleted" album for 30 days before they're permanently removed.</p>
       </div>
     </div>
   </section>
 
   <!-- FAQ -->
-  <section id="faq">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="kicker">Answers</span>
-        <h2>Frequently asked questions</h2>
-        <p>The quick answers to the things people ask us most.</p>
+  <section class="faq-section wrap" id="faq">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Answers</div>
+      <h2>Frequently asked questions</h2>
+      <p>Can't find what you're looking for? Reach out — we're happy to help.</p>
+    </div>
+    <div class="faq-list" id="faqList">
+      <!-- items injected/enhanced by JS; static fallback below -->
+      <div class="faq">
+        <button class="faq-q">How does CleanIt actually delete my photos?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">You swipe through your library and build a "to delete" pile. Nothing is removed until you confirm. When you do, the photos are moved to your iOS <strong>Recently Deleted</strong> album, where they stay for 30 days so you can recover anything by mistake.</div></div>
       </div>
-      <div class="faq" id="faqList"></div>
+      <div class="faq">
+        <button class="faq-q">Are my photos ever uploaded anywhere?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">Never. CleanIt runs <strong>entirely on your device</strong>. Your photos, videos, and analysis stay local — we have no servers that can see your library and we never collect your media.</div></div>
+      </div>
+      <div class="faq">
+        <button class="faq-q">What's the difference between Free and Pro?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">The <strong>Free plan</strong> lets you clean a limited number of photos each week. <strong>Pro</strong> unlocks unlimited swiping, full Smart Scan, and priority support. Pro is available as a weekly or yearly subscription.</div></div>
+      </div>
+      <div class="faq">
+        <button class="faq-q">How do I upgrade to Pro?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">Open <strong>Settings</strong> inside CleanIt and tap <strong>Upgrade to Pro</strong>, or tap the upgrade prompt when you reach your weekly limit. You'll see the available plans and can subscribe right in the app.</div></div>
+      </div>
+      <div class="faq">
+        <button class="faq-q">How do I cancel my subscription?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">Subscriptions are managed by Apple. Go to <strong>Settings → your name → Subscriptions</strong> on your iPhone, select CleanIt, and tap Cancel. You'll keep Pro until the end of the current billing period.</div></div>
+      </div>
+      <div class="faq">
+        <button class="faq-q">I paid for Pro but it's not showing. What now?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">Open <strong>Settings → Restore Purchases</strong> in CleanIt — this re-syncs your subscription from your Apple ID. Make sure you're signed into the same Apple ID used to purchase. Still stuck? Email us and we'll sort it out fast.</div></div>
+      </div>
+      <div class="faq">
+        <button class="faq-q">Can I get a photo back after deleting it?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. Open the Photos app → <strong>Albums → Recently Deleted</strong>. Anything you removed in the last 30 days can be recovered with a tap.</div></div>
+      </div>
+      <div class="faq">
+        <button class="faq-q">Does CleanIt free up iCloud storage too?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">If iCloud Photos is enabled, deletions sync across your devices and free up iCloud space once they leave Recently Deleted. CleanIt cleans your library; iOS handles the rest automatically.</div></div>
+      </div>
+      <div class="faq">
+        <button class="faq-q">Which devices does CleanIt support?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">CleanIt runs on iPhone and iPad with a recent version of iOS. Just grant photo access on first launch and you're ready to start cleaning.</div></div>
+      </div>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section id="contact">
-    <div class="wrap">
-      <div class="contact reveal">
-        <h2>Still need a hand?</h2>
-        <p>Send us a note and a real person from the Sunwell team will get back to you — usually within a day.</p>
-        <button class="email-chip" id="emailChip">
-          <span>✉</span>
-          <span id="emailText">sunwellsupport@appstudios.ai</span>
-          <span class="copy">COPY</span>
-        </button>
-      </div>
+  <section class="contact wrap" id="contact">
+    <div class="contact-card reveal">
+      <h2>Still need a hand?</h2>
+      <p>Our team reads every message. Tell us what's happening and we'll get you back to a clutter-free library.</p>
+      <a class="email-btn" href="mailto:cleanit@appstudios.ai">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+        cleanit@appstudios.ai
+      </a>
+      <div class="resp">Typical response time: under 24 hours, 7 days a week.</div>
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
-    <div class="wrap">
-      <a class="brand" href="#top"><span class="mark"></span>Sunwell</a>
-      <div class="flinks">
+    <div class="wrap foot-inner">
+      <div class="brand">
+        <span class="logo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+        </span>
+        CleanIt
+      </div>
+      <div class="foot-links">
         <a href="#help">Help</a>
         <a href="#faq">FAQ</a>
-        <a href="#contact">Contact</a>
-        <a href="mailto:sunwellsupport@appstudios.ai">Email</a>
+        <a href="mailto:cleanit@appstudios.ai">Contact</a>
       </div>
-      <div>© <span id="year"></span> Sunwell · App Studios. All rights reserved.</div>
+      <div class="copy">© <span id="year"></span> CleanIt by App Studios. All rights reserved.</div>
     </div>
   </footer>
 
-  <div class="toast" id="toast">Email copied to clipboard</div>
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-<script>
-  const SUPPORT_EMAIL = 'sunwellsupport@appstudios.ai';
-
-  /* ---- FAQ data ---- */
-  const faqs = [
-    { q: 'How do I get started with Sunwell?', a: 'Download Sunwell from the App Store, open it, and follow the quick onboarding. You\'ll be up and running in under a minute — no account required to begin exploring.' },
-    { q: 'How do I manage or cancel my subscription?', a: 'Subscriptions are handled through your Apple ID. Open the iPhone Settings app, tap your name, then Subscriptions, and select Sunwell to change or cancel your plan. You\'ll keep access until the end of your current billing period.' },
-    { q: 'How do I restore a previous purchase?', a: 'Inside Sunwell, go to Settings and tap "Restore Purchases." As long as you\'re signed in with the same Apple ID used for the original purchase, your subscription will be restored instantly.' },
-    { q: 'Will I be charged automatically?', a: 'Yes — subscriptions renew automatically unless cancelled at least 24 hours before the end of the current period. You can turn off auto-renewal any time in your Apple ID subscription settings.' },
-    { q: 'Is my data private and secure?', a: 'Absolutely. Your data stays on your device wherever possible, and anything synced is encrypted in transit. We never sell your personal information. See our privacy policy for full details.' },
-    { q: 'I found a bug — how do I report it?', a: 'We\'d love to hear about it so we can fix it fast. Email us with a short description and, if you can, a screenshot or the steps to reproduce it. Every report helps us improve Sunwell.' },
-    { q: 'How quickly will I hear back from support?', a: 'We typically respond within 24 hours, often much sooner. Reaching out by email gives us the context we need to help you the fastest.' }
-  ];
-
-  const list = document.getElementById('faqList');
-  faqs.forEach((f, i) => {
-    const item = document.createElement('div');
-    item.className = 'qa reveal';
-    item.innerHTML = `
-      <button aria-expanded="false">
-        <span>${f.q}</span>
-        <span class="chev">+</span>
-      </button>
-      <div class="ans"><div class="ans-inner">${f.a}</div></div>`;
-    const btn = item.querySelector('button');
-    const ans = item.querySelector('.ans');
-    btn.addEventListener('click', () => {
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.qa').forEach(q => {
-        q.classList.remove('open');
-        q.querySelector('.ans').style.maxHeight = null;
-        q.querySelector('button').setAttribute('aria-expanded', 'false');
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var item = btn.parentElement;
+        var answer = item.querySelector('.faq-a');
+        var isOpen = item.classList.contains('open');
+        // close others
+        document.querySelectorAll('.faq.open').forEach(function (o) {
+          if (o !== item) { o.classList.remove('open'); o.querySelector('.faq-a').style.maxHeight = null; }
+        });
+        if (isOpen) {
+          item.classList.remove('open');
+          answer.style.maxHeight = null;
+        } else {
+          item.classList.add('open');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
       });
-      if (!isOpen) {
-        item.classList.add('open');
-        ans.style.maxHeight = ans.scrollHeight + 'px';
-        btn.setAttribute('aria-expanded', 'true');
-      }
     });
-    list.appendChild(item);
-  });
 
-  /* ---- Copy email ---- */
-  const toast = document.getElementById('toast');
-  document.getElementById('emailChip').addEventListener('click', async () => {
-    try {
-      await navigator.clipboard.writeText(SUPPORT_EMAIL);
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 2200);
-    } catch (e) {
-      window.location.href = 'mailto:' + SUPPORT_EMAIL;
-    }
-  });
-
-  /* ---- Scroll reveal ---- */
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((e, idx) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('in'), (idx % 6) * 80);
-        io.unobserve(e.target);
-      }
+    // Scroll reveal
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function (el, i) {
+      el.style.transitionDelay = (i % 6) * 60 + 'ms';
+      io.observe(el);
     });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  /* ---- Card spotlight ---- */
-  document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const r = card.getBoundingClientRect();
-      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    // Card spotlight follow
+    document.querySelectorAll('.card').forEach(function (card) {
+      card.addEventListener('mousemove', function (e) {
+        var r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      });
     });
-  });
-
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
+  </script>
 </body>
 </html>
